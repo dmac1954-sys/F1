@@ -31,9 +31,13 @@ def main():
         print(race.race_name, end=" ")
         print(race.locality)
 
-    round_request = input(
-        "Please enter the round number that you would like to see the results for: "
-    )
+    max_rounds = season.get_max_rounds()
+    while True:
+        round_request = input(f"Please enter the round number that you would like to see the results from Rounds 1 to Rounds {max_rounds}: ")
+        if 1 <= int(round_request) <= max_rounds:
+            break
+        print("This round is invalid! Please try again!")
+        
     http_str = f" http://ergast.com/api/f1/{year_amount}/{round_request}/results/.json"
     race_dict_results = get_url(http_str)
 

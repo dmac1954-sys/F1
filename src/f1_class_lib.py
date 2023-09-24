@@ -11,6 +11,9 @@ class Season:
     def sort_races(self):
         self.races.sort(key=lambda x: x.get_round())
 
+    def get_max_rounds(self):
+        return len(self.races)
+
 
 class Race:
     def __init__(self, race_info):
